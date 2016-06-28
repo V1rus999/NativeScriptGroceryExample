@@ -1,0 +1,20 @@
+<ActionBar title="List">
+    <ActionItem text="Get Tasks" (tap)="getTasks()" ios.position="right"></ActionItem>
+    <ActionItem text="Log Out" (tap)="logOut()" ios.position="right"></ActionItem>
+
+</ActionBar>
+
+<StackLayout>
+    <ActivityIndicator [busy]="isLoading" [visibility]="isLoading ? 'visible' : 'collapse'" horizontalAlignment="center"
+                       verticalAlignment="center"></ActivityIndicator>
+    <GridLayout>
+        <ListView [items]="taskListViewModel" class="small-spacing" [class.visible]="listLoaded">
+            <template let-item="item">
+                <StackLayout (tap)="onListViewItemTap(item)">
+                    <Label [text]="item.activityName" class="medium-spacing"></Label>
+                    <Label [text]="item.processFolio" class="medium-spacing"></Label>
+                </StackLayout>
+            </template>
+        </ListView>
+    </GridLayout>
+</StackLayout>
